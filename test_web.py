@@ -11,7 +11,7 @@ def do_post(api_url, query_body_):
     # print(json_res)
 
 
-query_api_url = "http://127.0.0.1:8000/encode"
+query_api_url = "http://127.0.0.1:8888/encode"
 query_body = {
     "texts": ["你是谁？", "你好吗？"]
 }
