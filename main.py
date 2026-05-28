@@ -10,7 +10,8 @@ from sentence_transformers import SentenceTransformer
 import time
 
 batch_size = 128
-model = SentenceTransformer("BAAI/bge-m3", device="cuda", model_kwargs={"torch_dtype": "float16"})
+model_path = "/apps/models/BAAI/bge-m3"
+model = SentenceTransformer(model_path, device="cuda", model_kwargs={"torch_dtype": "float16"}, local_files_only=True)
 print(model.device)
 
 
