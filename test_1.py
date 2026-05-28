@@ -4,9 +4,10 @@ from sentence_transformers import SentenceTransformer
 import time
 from utils import *
 
+batch_size = 32
 model_path = "/apps/models/BAAI/bge-m3"
 model = SentenceTransformer(model_path, device="cuda", local_files_only=True)
-model.encode(["init model"])
+model.encode(["init model"], batch_size=batch_size)
 print("Model loaded successfully, device: {}...".format(model.device))
 
 test_text = "That is a happy person, That is a happy person, That is a happy person, That is a happy person, That is a happy person, That is a happy person"
