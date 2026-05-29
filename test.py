@@ -11,12 +11,13 @@ model.encode(["init model"], batch_size=batch_size)
 print("Model loaded successfully, device: {}...".format(model.device))
 
 # 验证超长是否截断
-print("model.max_seq_length: {}".format(model.max_seq_length))
+print("model.max_seq_length: {}".format(model.max_seq_length))  # 8192
 text = "你好吗？" * 100000
-print("Token cnt: {}".format(count_token(text)))
+print("Token cnt: {}".format(count_token(text)))  # 500000
 embedding = model.encode(text)  # 超出8192不报错
-tokens = model.tokenizer.encode(text)
-print("自动截断后参与encode的Token数: {}".format(len(tokens)))
+tokens = model.tokenizer.encode(
+    text)  # [transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (300003 > 8192). Running this sequence through the model will result in indexing errors
+print("自动截断后参与encode的Token数: {}".format(len(tokens)))  # 300003
 
 # 耗时测试
 # test_text = "That is a happy person, That is a happy person, That is a happy person, That is a happy person, That is a happy person, That is a happy person"
